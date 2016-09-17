@@ -149,7 +149,8 @@ module.exports = options => {
 
     cpuUsage()
       .then(res => {
-        const fix = n => parseFloat(n.toFixed(3))
+        //const fix = n => parseFloat(n.toFixed(3))
+        const fix = n => parseInt(n * 100)
 
         Object.keys(res.cpu).forEach(key => {
           res.cpu[key] = fix(res.cpu[key]);
