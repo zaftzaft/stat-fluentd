@@ -182,6 +182,10 @@ module.exports = options => {
     }, results[0]);
   })
   .then(res => {
+    if(options.debug){
+      return res;
+    }
+
     return logPush({
       data: res,
       host: options.host,

@@ -18,6 +18,10 @@ parser.addArgument("--suffix");
 parser.addArgument("--host", { help: "fluentd host" });
 parser.addArgument("--port", { help: "fluentd port" });
 
+parser.addArgument("--debug", {
+  action: "storeTrue"
+});
+
 parser.addArgument(["--verbose", "-v"], {
   action: "storeTrue"
 });
@@ -31,10 +35,12 @@ require("../index")({
   suffix:    args.suffix,
   host:      args.host,
   port:      args.port,
-  dfTarget:  args.df_target
+  dfTarget:  args.df_target,
+
+  debug:     args.debug
 })
 .then(res => {
-  if(args.verbose){
+  if(args.debug || args.verbose){
     console.log(res);
   }
 })
