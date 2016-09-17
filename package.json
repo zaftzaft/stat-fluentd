@@ -1,0 +1,23 @@
+{
+  "name": "stat-fluentd",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "stat-fluentd": "bin/stat-fluentd"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "^1.0.7",
+    "bluebird": "^3.4.6",
+    "got": "^6.5.0"
+  },
+  "files": [
+    "index.js",
+    "bin"
+  ]
+}

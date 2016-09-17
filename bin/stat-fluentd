@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+'use strict';
+
+const ArgumentParser = require("argparse").ArgumentParser;
+
+const parser = new ArgumentParser({
+  description: "push stat to fluentd"
+});
+
+
+parser.addArgument(["-D", "--df-target"], { help: "df command target" });
+
+parser.addArgument("--prefix", { help: "e.g. stat." });
+parser.addArgument("--name", { help: "default: os.hostname()" });
+parser.addArgument("--suffix");
+
+
+parser.addArgument("--host", { help: "fluentd host" });
+parser.addArgument("--port", { help: "fluentd port" });
+
+parser.addArgument(["--verbose", "-v"], {
+  action: "storeTrue"
+});
+
+
+let args = parser.parseArgs();
+
+require("../index")({
+  prefix:    args.prefix,
+  name:      args.name,
+  suffix:    args.suffix,
+  host:      args.host,
+  port:      args.port,
+  dfTarget:  args.df_target
+})
+.then(res => {
+  if(args.verbose){
+    console.log(res);
+  }
+})
+.catch(e => {
+  console.error(e.stack);
+  process.exit(1);
+});
