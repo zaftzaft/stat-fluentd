@@ -120,11 +120,11 @@ function df(options){
 
           return {
             filesystem: data[0],
-            blocks: data[1],
-            used: data[2],
-            available: data[3],
-            parcent: data[4],
-            mount: data[5]
+            blocks:     parseInt(data[1], 10),
+            used:       parseInt(data[2], 10),
+            available:  parseInt(data[3], 10),
+            parcent:    data[4],
+            mount:      data[5]
           };
         });
 
@@ -191,26 +191,3 @@ module.exports = options => {
   });
 };
 
-
-//cpuUsage({
-//  delay: 1000
-//})
-//  .then(res => {
-//    Object.keys(res.cpu).forEach(key => {
-//      process.stdout.write(`${key} ${res.cpu[key].toFixed(3)}, `);
-//    });
-//    console.log();
-//
-//    res.cpus.forEach(cpu => {
-//      Object.keys(cpu).forEach(key => {
-//        process.stdout.write(`${key} ${cpu[key].toFixed(3)}, `);
-//      });
-//
-//      console.log();
-//    });
-//
-//
-//  })
-//  .catch(e => {
-//    console.error(e.stack);
-//  });
