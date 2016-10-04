@@ -1,6 +1,6 @@
 {
   "name": "stat-fluentd",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -12,9 +12,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "argparse": "^1.0.7",
-    "bluebird": "^3.4.6",
-    "got": "^6.5.0"
+    "argparse": "1.0.7",
+    "bluebird": "3.4.6",
+    "flat": "2.0.1",
+    "got": "6.5.0"
   },
   "files": [
     "index.js",
