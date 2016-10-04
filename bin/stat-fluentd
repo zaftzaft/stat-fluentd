@@ -18,6 +18,11 @@ parser.addArgument("--suffix");
 parser.addArgument("--host", { help: "fluentd host" });
 parser.addArgument("--port", { help: "fluentd port" });
 
+parser.addArgument(["-F", "--flat"], {
+  help: "output flat JSON",
+  action: "storeTrue"
+});
+
 parser.addArgument("--debug", {
   action: "storeTrue"
 });
@@ -37,7 +42,8 @@ require("../index")({
   port:      args.port,
   dfTarget:  args.df_target,
 
-  debug:     args.debug
+  debug:     args.debug,
+  flat:      args.flat
 })
 .then(res => {
   if(args.debug || args.verbose){

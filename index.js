@@ -1,9 +1,10 @@
 'use strict';
 
-const os = require("os");
-const got = require("got");
-const Promise = require("bluebird");
-const fs      = Promise.promisifyAll(require("fs"));
+const os            = require("os");
+const got           = require("got");
+const flatten       = require("flat");
+const Promise       = require("bluebird");
+const fs            = Promise.promisifyAll(require("fs"));
 const child_process = Promise.promisifyAll(require("child_process"));
 
 
@@ -181,6 +182,9 @@ module.exports = options => {
       hostname: os.hostname()
 
     }, results[0]);
+  })
+  .then(res => {
+    return options.flat ? flatten(res) : res;
   })
   .then(res => {
     if(options.debug){
